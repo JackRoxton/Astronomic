@@ -5,6 +5,9 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField]
+    List<GameObject> asteroids = new List<GameObject>();
+
+    [SerializeField]
     GameObject asteroid = null;
     [SerializeField]
     GameObject missile = null;
@@ -47,7 +50,7 @@ public class Spawner : MonoBehaviour
             else
                 leftSpawner.SpawnSide();
         else
-        Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        Instantiate(RandomAsteroid(), this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
         sFlag = true;
         yield return new WaitForSeconds(Random.Range(1, 3));
         sFlag = false;
@@ -58,7 +61,7 @@ public class Spawner : MonoBehaviour
             Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
 
         if (Random.Range(0, 10) <= 7)
-            Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+            Instantiate(RandomAsteroid(), this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
 
         if (Random.Range(0, 10) <= 5)
             if (Random.Range(0, 2) == 1)
@@ -81,14 +84,20 @@ public class Spawner : MonoBehaviour
             else
                 leftSpawner.SpawnSide();
         else
-            Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+            Instantiate(RandomAsteroid(), this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
         sFlag = true;
         yield return new WaitForSeconds(0.75f);
         sFlag = false;
     }
     IEnumerator SendBoss()
     {
-        Instantiate(asteroid /*boss*/, this.transform.position + new Vector3(Random.Range(-2, 2), 0, 0), Quaternion.identity);
+        Instantiate(asteroids[0] /*boss*/, this.transform.position + new Vector3(Random.Range(-2, 2), 0, 0), Quaternion.identity);
         yield return null;
+    }
+
+    private GameObject RandomAsteroid()
+    {
+        //rajouter probas
+        return asteroids[Random.Range(0, 11)];
     }
 }

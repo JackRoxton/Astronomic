@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2358029864614783141}
   - component: {fileID: 2534633607459078748}
   m_Layer: 0
-  m_Name: patates_9
+  m_Name: Aster9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,4 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ee0e75e527b81499b8ef70069e2f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charControl: {fileID: 0}
+  charControl: {fileID: 6375277493831992667, guid: 1249dfda3e671164bbf87e37feed2b63,
+    type: 3}
