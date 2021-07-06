@@ -9,16 +9,31 @@ public class Asteroid : MonoBehaviour
     [SerializeField, Range(0,1000)]
     float speed = 300;
 
+    Vector3 target;
+    public bool sideways = false;
+
     bool hit = false;
     void Start()
     {
-        this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * speed);
+        this.speed += Random.Range(-50f, 50f);
+
+        target = new Vector3(Random.Range(-8f,8f),4.5f);
+        target.x -= this.transform.position.x;
+        target.y -= this.transform.position.y;
+        target.Normalize();
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(target * speed);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(this.size > CharacterControler.SendWeight())
+        {
+            /*aura rouge*/
+        }
+        else
+        {
+            /*aura bleue*/
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
