@@ -10,6 +10,8 @@ public class MenuManager : MonoBehaviour
     Button Play = null, Credits = null, Quit = null;
     [SerializeField]
     Text Title = null;
+    [SerializeField]
+    GameObject Background = null;
 
     bool credits = false;
 
@@ -28,6 +30,7 @@ public class MenuManager : MonoBehaviour
             Credits.gameObject.SetActive(true);
             Quit.gameObject.SetActive(true);
             Title.gameObject.SetActive(true);
+            Background.gameObject.SetActive(true);
 
             credits = false;
             //enlever les crédits
@@ -45,6 +48,7 @@ public class MenuManager : MonoBehaviour
         Credits.gameObject.SetActive(false);
         Quit.gameObject.SetActive(false);
         Title.gameObject.SetActive(false);
+        Background.gameObject.SetActive(false);
 
         credits = true;
         //afficher crédits
