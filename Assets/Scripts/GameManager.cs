@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float gameTimer;
+    public static float gameTimer;
     [SerializeField]
     Spawner spawner = null;
     void Start()
@@ -30,5 +30,10 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         UIManager.GameOver();
+    }
+
+    public static float GetTimer()
+    {
+        return gameTimer;
     }
 }

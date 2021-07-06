@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]
+    Text TimerText = null;
+    [SerializeField]
+    Slider TimerSlider = null;
+
     void Start()
     {
         
@@ -12,7 +17,8 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        
+        TimerText.text = (90 - GameManager.GetTimer()).ToString();
+        TimerSlider.value = GameManager.GetTimer();
     }
 
     public static void GameOver()
