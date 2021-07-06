@@ -10,7 +10,6 @@ public class Asteroid : MonoBehaviour
     float speed = 300;
 
     Vector3 target;
-    public bool sideways = false;
 
     bool hit = false;
     void Start()
@@ -24,18 +23,6 @@ public class Asteroid : MonoBehaviour
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(target * speed);
     }
 
-    void Update()
-    {
-        if(this.size > CharacterControler.SendWeight())
-        {
-            /*aura rouge*/
-        }
-        else
-        {
-            /*aura bleue*/
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         CharacterControler player = collision.gameObject.GetComponent<CharacterControler>();
@@ -45,6 +32,9 @@ public class Asteroid : MonoBehaviour
             player.ChangeWeight(size);
 
             hit = true;
+
+            AudioManager.Instance.PlayPowerUp();
+
             Destroy(this.gameObject);
         }
     }
