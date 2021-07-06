@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     GameObject missile;
 
-    int phase = 1;
+    public int phase = 1;
     bool sFlag = false;
 
     void Start()
@@ -19,15 +19,44 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (sFlag == false)
-            StartCoroutine(spawn());
+        if (sFlag == false && phase == 1)
+            StartCoroutine(PhaseOne());
+
+        if (sFlag == false && phase == 2)
+            StartCoroutine(PhaseTwo());
+
+        if (sFlag == false && phase == 3)
+            StartCoroutine(PhaseThree());
     }
 
-    IEnumerator spawn()
+    IEnumerator PhaseOne()
     {
+        if(Random.Range(0,10) > 8)
+        Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        else
         Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
         sFlag = true;
-        yield return new WaitForSeconds(Random.Range(1,3));
+        yield return new WaitForSeconds(Random.Range(1, 3));
+        sFlag = false;
+    }
+    IEnumerator PhaseTwo()
+    {
+        if (Random.Range(0, 10) > 7)
+            Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        else
+            Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        sFlag = true;
+        yield return new WaitForSeconds(Random.Range(1, 2));
+        sFlag = false;
+    }
+    IEnumerator PhaseThree()
+    {
+        if (Random.Range(0, 10) > 4)
+            Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        else
+            Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        sFlag = true;
+        yield return new WaitForSeconds(1);
         sFlag = false;
     }
 }

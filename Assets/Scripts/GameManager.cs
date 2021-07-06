@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float timer;
+    [SerializeField]
+    Spawner spawner;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        if (timer >= 60)
+            spawner.phase = 3;
+        else if (timer >= 30)
+            spawner.phase = 2;
         
     }
 }

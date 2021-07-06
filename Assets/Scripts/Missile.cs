@@ -5,10 +5,13 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     [SerializeField]
-    int loss = -100;
+    float loss = -1;
+    [SerializeField, Range(0, 1000)]
+    float speed = 300;
+    bool hit = false;
     void Start()
     {
-        this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 300);
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * speed);
     }
 
     void Update()
@@ -21,7 +24,10 @@ public class Missile : MonoBehaviour
         CharacterControler player = collision.gameObject.GetComponent<CharacterControler>();
         if(player != null)
         {
+            if(!hit)
             player.ChangeWeight(loss);
+
+            hit = true;
             Destroy(this.gameObject);
         }
     }
