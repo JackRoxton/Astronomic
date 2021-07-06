@@ -5,13 +5,11 @@ using UnityEngine;
 public class AsterClignotant : MonoBehaviour
 {
     private bool heavierThanPlayer;
-    [SerializeField]CharacterControler charControl;
 
     // Start is called before the first frame update
     void Start()
     {
         heavierThanPlayer = true;
-        charControl = GameObject.Find("Player").GetComponent<CharacterControler>();
     }
 
     // Update is called once per frame

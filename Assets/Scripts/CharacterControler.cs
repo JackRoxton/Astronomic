@@ -7,8 +7,12 @@ public class CharacterControler : MonoBehaviour
     [SerializeField, Range(0,0.1f)]
     private float speed = 0.10f;
     private float horizontal;
-    private static float size = 5;
-
+    private static float size = 0.6f; 
+    void Start()
+    {
+        this.transform.localScale = Vector3.one * 2*Mathf.Pow(0.75f * size /(Mathf.PI*150) , 1f / 3f);
+        Debug.Log("scale: " + this.transform.localScale.x);
+    }
     void Update()
     {
 
@@ -20,37 +24,38 @@ public class CharacterControler : MonoBehaviour
         {
             this.transform.position = new Vector3(Mathf.Clamp(
             this.transform.position.x -speed,
-            -9 + this.transform.localScale.x * 0.0903266f,
-            9 - this.transform.localScale.x * 0.0903266f),
+            -9 + this.transform.localScale.x * 3.3f,
+            9 - this.transform.localScale.x * 3.3f),
             this.transform.position.y);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             this.transform.position = new Vector3(Mathf.Clamp(
             this.transform.position.x + speed,
-            -9 + this.transform.localScale.x * 0.0903266f,
-            9 - this.transform.localScale.x * 0.0903266f),
+            -9 + this.transform.localScale.x *3.3f,
+            9 - this.transform.localScale.x *3.3f),
             this.transform.position.y);
         }
     }
 
     public void ChangeWeight(float weight)
     {
-        if(weight > size)
+        if(weight > size||size+weight<0f)
         {
             GameManager.GameOver();
             AudioManager.Instance.PlayImpact();
             Destroy(this.gameObject);
-        }
-
-        if(weight < 0)
+        }else if(weight < 0)
         {
             AudioManager.Instance.PlayImpact();
         }
+        else
+        {
+            size += weight;
+            this.transform.localScale = Vector3.one *2f* Mathf.Pow(0.75f * size /(150f* Mathf.PI) , 1f / 3f);
+        }
+        Debug.Log(size);
 
-        this.transform.localScale += Vector3.one * weight;
-        this.transform.position += new Vector3(0, weight / 12,0);
-        size += weight;
     }
 
     public static float SendWeight()
