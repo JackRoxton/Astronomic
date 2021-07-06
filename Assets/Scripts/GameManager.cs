@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float timer;
+    public float gameTimer;
     [SerializeField]
-    Spawner spawner;
+    Spawner spawner = null;
     void Start()
     {
         
@@ -14,11 +14,21 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= 60)
+        gameTimer += Time.deltaTime;
+        if (gameTimer >= 90)
+            UIManager.WinScreen();
+        else if (gameTimer >= 80)
+            spawner.phase = 4;
+        else if (gameTimer >= 60)
             spawner.phase = 3;
-        else if (timer >= 30)
+        else if (gameTimer >= 30)
             spawner.phase = 2;
-        
+
+    }
+
+    public static void GameOver()
+    {
+        Time.timeScale = 0;
+        UIManager.GameOver();
     }
 }

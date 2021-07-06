@@ -5,17 +5,17 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject asteroid;
+    GameObject asteroid = null;
     [SerializeField]
-    GameObject missile;
+    GameObject missile = null;
+
+    [SerializeField]
+    SideSpawner rightSpawner = null;
+    [SerializeField]
+    SideSpawner leftSpawner = null;
 
     public int phase = 1;
-    bool sFlag = false;
-
-    void Start()
-    {
-        
-    }
+    bool sFlag = false, bFlag = false;
 
     void Update()
     {
@@ -27,12 +27,25 @@ public class Spawner : MonoBehaviour
 
         if (sFlag == false && phase == 3)
             StartCoroutine(PhaseThree());
+
+        if (bFlag == false && phase == 4)
+        {
+            StartCoroutine(SendBoss());
+            bFlag = true;
+        }
     }
 
     IEnumerator PhaseOne()
     {
-        if(Random.Range(0,10) > 8)
-        Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        int rand = Random.Range(0, 10);
+        if(rand > 8)
+            Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        
+        else if (rand <= 3)
+            if (Random.Range(0, 2) == 1)
+                rightSpawner.SpawnSide();
+            else
+                leftSpawner.SpawnSide();
         else
         Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
         sFlag = true;
@@ -41,22 +54,41 @@ public class Spawner : MonoBehaviour
     }
     IEnumerator PhaseTwo()
     {
-        if (Random.Range(0, 10) > 7)
+        if (Random.Range(0,10) >= 7)
             Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
-        else
+
+        if (Random.Range(0, 10) <= 7)
             Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+
+        if (Random.Range(0, 10) <= 5)
+            if (Random.Range(0, 2) == 1)
+                rightSpawner.SpawnSide();
+            else
+                leftSpawner.SpawnSide();
+
         sFlag = true;
         yield return new WaitForSeconds(Random.Range(1, 2));
         sFlag = false;
     }
     IEnumerator PhaseThree()
     {
-        if (Random.Range(0, 10) > 4)
-            Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        Instantiate(missile, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
+        int rand = Random.Range(0, 10);
+        if (rand < 5)
+        if (rand <=1)
+            if (Random.Range(0, 1) == 1)
+                rightSpawner.SpawnSide();
+            else
+                leftSpawner.SpawnSide();
         else
             Instantiate(asteroid, this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
         sFlag = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.75f);
         sFlag = false;
+    }
+    IEnumerator SendBoss()
+    {
+        Instantiate(asteroid /*boss*/, this.transform.position + new Vector3(Random.Range(-2, 2), 0, 0), Quaternion.identity);
+        yield return null;
     }
 }
