@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour
+public class Missile : MonoBehaviour
 {
     [SerializeField]
-    int size = 100;
+    int loss = -100;
     void Start()
     {
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 300);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -20,9 +19,9 @@ public class Asteroid : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         CharacterControler player = collision.gameObject.GetComponent<CharacterControler>();
-        if (player != null)
+        if(player != null)
         {
-            player.ChangeWeight(size);
+            player.ChangeWeight(loss);
             Destroy(this.gameObject);
         }
     }
