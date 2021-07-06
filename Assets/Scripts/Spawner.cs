@@ -12,13 +12,16 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     GameObject missile = null;
 
-    [SerializeField]
-    SideSpawner rightSpawner = null;
-    [SerializeField]
-    SideSpawner leftSpawner = null;
-
     public int phase = 1;
     bool sFlag = false, bFlag = false;
+
+    Vector3 right, left;
+
+    private void Start()
+    {
+        right = new Vector3(10, 0);
+        left = new Vector3(-10, 0);
+    }
 
     void Update()
     {
@@ -46,9 +49,9 @@ public class Spawner : MonoBehaviour
         
         else if (rand <= 3)
             if (Random.Range(0, 2) == 1)
-                rightSpawner.SpawnSide();
+                Instantiate(RandomAsteroid(), right - new Vector3(0, Random.Range(2, 5), 0), Quaternion.identity);
             else
-                leftSpawner.SpawnSide();
+                Instantiate(RandomAsteroid(), left - new Vector3(0, Random.Range(2, 5), 0), Quaternion.identity);
         else
         Instantiate(RandomAsteroid(), this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
         sFlag = true;
@@ -65,9 +68,9 @@ public class Spawner : MonoBehaviour
 
         if (Random.Range(0, 10) <= 5)
             if (Random.Range(0, 2) == 1)
-                rightSpawner.SpawnSide();
+                Instantiate(RandomAsteroid(), right - new Vector3(0, Random.Range(2, 5), 0), Quaternion.identity);
             else
-                leftSpawner.SpawnSide();
+                Instantiate(RandomAsteroid(), left - new Vector3(0, Random.Range(2, 5), 0), Quaternion.identity);
 
         sFlag = true;
         yield return new WaitForSeconds(Random.Range(1, 2));
@@ -80,10 +83,10 @@ public class Spawner : MonoBehaviour
         if (rand < 5)
         if (rand <=1)
             if (Random.Range(0, 1) == 1)
-                rightSpawner.SpawnSide();
+                    Instantiate(RandomAsteroid(), right - new Vector3(0, Random.Range(2, 5), 0), Quaternion.identity);
+                else
+                    Instantiate(RandomAsteroid(), left - new Vector3(0, Random.Range(2, 5), 0), Quaternion.identity);
             else
-                leftSpawner.SpawnSide();
-        else
             Instantiate(RandomAsteroid(), this.transform.position + new Vector3(Random.Range(-6, 6), 0, 0), Quaternion.identity);
         sFlag = true;
         yield return new WaitForSeconds(0.75f);
@@ -97,7 +100,30 @@ public class Spawner : MonoBehaviour
 
     private GameObject RandomAsteroid()
     {
-        //rajouter probas
-        return asteroids[Random.Range(0, 11)];
+        int rand, astero;
+        rand = Random.Range(0, 100);
+        if (rand <= 6)
+            astero = 1;
+        else if (rand <= 14)
+            astero = 2;
+        else if (rand <= 20)
+            astero = 3;
+        else if (rand <= 28)
+            astero = 4;
+        else if (rand <= 36)
+            astero = 5;
+        else if (rand <= 44)
+            astero = 6;
+        else if (rand <= 54)
+            astero = 7;
+        else if (rand <= 64)
+            astero = 8;
+        else if (rand <= 74)
+            astero = 9;
+        else
+            astero = 10;
+
+        return asteroids[astero];
     }
+
 }

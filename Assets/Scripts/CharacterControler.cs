@@ -11,13 +11,6 @@ public class CharacterControler : MonoBehaviour
 
     void Update()
     {
-        /*horizontal = Input.GetAxis("Horizontal");
-        Debug.Log(Input.GetAxis("Horizontal"));
-        this.transform.position = new Vector3(Mathf.Clamp(
-            this.transform.position.x + speed * horizontal,
-            -9 + this.transform.localScale.x * 0.0903266f,
-            9 - this.transform.localScale.x * 0.0903266f),
-            this.transform.position.y);*/
 
         if(Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.D))
         {
@@ -46,8 +39,15 @@ public class CharacterControler : MonoBehaviour
         if(weight > size)
         {
             GameManager.GameOver();
+            AudioManager.Instance.PlayImpact();
             Destroy(this.gameObject);
         }
+
+        if(weight < 0)
+        {
+            AudioManager.Instance.PlayImpact();
+        }
+
         this.transform.localScale += Vector3.one * weight;
         this.transform.position += new Vector3(0, weight / 12,0);
         size += weight;

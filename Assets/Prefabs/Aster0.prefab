@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8624497457796685741}
   - component: {fileID: 2971680222850949430}
   - component: {fileID: 8116975835861345610}
+  - component: {fileID: -6847638167254235574}
   m_Layer: 0
   m_Name: Aster0
   m_TagString: Untagged
@@ -157,3 +158,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charControl: {fileID: 6375277493831992667, guid: 1249dfda3e671164bbf87e37feed2b63,
     type: 3}
+--- !u!114 &-6847638167254235574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099154799164422770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e231d9c434adfa74db1a4fe16e9a44f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 5
+  speed: 300
+  sideways: 0
