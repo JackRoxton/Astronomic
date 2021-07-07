@@ -16,11 +16,11 @@ public class CharacterControler : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.D))
+        if((Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
         {
 
         }
-        else if(Input.GetKey(KeyCode.Q))
+        else if(Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
         {
             this.transform.position = new Vector3(Mathf.Clamp(
             this.transform.position.x -speed,
@@ -28,7 +28,7 @@ public class CharacterControler : MonoBehaviour
             9 - this.transform.localScale.x * 3.3f),
             this.transform.position.y);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             this.transform.position = new Vector3(Mathf.Clamp(
             this.transform.position.x + speed,
