@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
     }
     public void TryAgain()
     {
-        Debug.Log("load");
         gameTimer = 0f;
         Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
