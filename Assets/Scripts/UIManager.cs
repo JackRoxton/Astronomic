@@ -10,7 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Slider TimerSlider = null;
     [SerializeField] GameObject panelGO=null, panelTuto=null, panelIGUI=null, fadeInPanel=null, resultPanel=null;
-    [SerializeField] Button tryAgain=null;
+    [SerializeField] Button tryAgain=null, mainMenu=null, tryagend=null;
+    [SerializeField] Sprite[] endingsBG = null;
     public static bool fadeIn = false, fadeOut=false;
     void Start()
     {
