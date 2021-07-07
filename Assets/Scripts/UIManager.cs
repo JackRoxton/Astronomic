@@ -9,10 +9,12 @@ public class UIManager : MonoBehaviour
     Text TimerText = null;
     [SerializeField]
     Slider TimerSlider = null;
+    [SerializeField] GameObject panelGO=null, panelTuto=null;
+    [SerializeField] Button tryAgain=null;
 
     void Start()
     {
-        
+        GameObject.Find("GameManager").GetComponent<GameManager>().SetUIMan(this);
     }
 
     void Update()
@@ -21,13 +23,17 @@ public class UIManager : MonoBehaviour
         TimerSlider.value = GameManager.GetTimer();
     }
 
-    public static void GameOver()
+    public void GameOver()
     {
-
+        panelGO.SetActive(true);
     }
 
     public static void WinScreen()
     {
 
+    }
+    public void DeactivateTuto()
+    {
+        panelTuto.SetActive(false);
     }
 }
