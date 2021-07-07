@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     Slider TimerSlider = null;
     [SerializeField] GameObject panelGO=null, panelTuto=null, panelIGUI=null, fadeInPanel=null, resultPanel=null;
     [SerializeField] Button tryAgain=null;
-    private static bool fadeIn = false, fadeOut=false;
+    public static bool fadeIn = false, fadeOut=false;
     void Start()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().SetUIMan(this);
@@ -43,11 +43,6 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         panelGO.SetActive(true);
-    }
-
-    public static void WinScreen()
-    {
-        fadeIn = true;
     }
     public void DeactivateTuto()
     {

@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         }
         else if (gameTimer >= 88)
-            UIManager.WinScreen();
+            UIManager.fadeIn=true;
         else if (gameTimer >= 85)
         {
             CharacterControler.timeOver = true;
