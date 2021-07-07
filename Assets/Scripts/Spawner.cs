@@ -19,8 +19,8 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        right = new Vector3(10, -2);
-        left = new Vector3(-10, -2);
+        right = new Vector3(10, 0);
+        left = new Vector3(-10, 0);
     }
 
     void Update()
