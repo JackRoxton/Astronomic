@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject panelGO=null, panelTuto=null, panelIGUI=null, fadeInPanel=null, resultPanel=null;
     [SerializeField] Button tryAgain=null, mainMenu=null, tryagend=null;
     [SerializeField] Sprite[] endingsBG = null;
+    [SerializeField] GameObject[] endingsTexts;
+    [SerializeField] Text resultWeightText = null;
+    [SerializeField] Image BGfin = null;
     public static bool fadeIn = false, fadeOut=false;
     void Start()
     {
@@ -20,21 +23,22 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (fadeInPanel.GetComponent<Image>().color.a >= 255f)
+        if (fadeIn&&fadeInPanel.GetComponent<Image>().color.a >= 255f)
         {
             fadeIn = false;
             DisplayResults(CharacterControler.SendWeight());
         }
         else if (fadeIn)
         {
+            fadeInPanel.SetActive(true);
             Color tmpCol = fadeInPanel.GetComponent<Image>().color;
-            tmpCol.a = fadeInPanel.GetComponent<Image>().color.a + 12f;
+            tmpCol.a = fadeInPanel.GetComponent<Image>().color.a + 5f;
             fadeInPanel.GetComponent<Image>().color=tmpCol;
         }
         else if (fadeInPanel.GetComponent<Image>().color.a > 0)
         {
             Color tmpCol = fadeInPanel.GetComponent<Image>().color;
-            tmpCol.a = fadeInPanel.GetComponent<Image>().color.a - 12f;
+            tmpCol.a = fadeInPanel.GetComponent<Image>().color.a - 5f;
             fadeInPanel.GetComponent<Image>().color = tmpCol;
         }
         TimerText.text = (90 - GameManager.GetTimer()).ToString();
@@ -57,13 +61,23 @@ public class UIManager : MonoBehaviour
     {
         if (result >= 30f)
         {
-            //annihilation totale
+            BGfin.sprite = endingsBG[0];
+            endingsTexts[0].SetActive(true);
+            resultWeightText.text = "Final Weight : " + result + " GigaTon !";
+            resultPanel.SetActive(true);
         }else if (result > 1.6f) {
-            //cratère
+            BGfin.sprite = endingsBG[1];
+            endingsTexts[1].SetActive(true);
+            resultWeightText.text = "Final Weight : " + result + " GigaTon !";
+            resultPanel.SetActive(true);
         }
         else
         {
-            //plouf
+            BGfin.sprite = endingsBG[2];
+            endingsTexts[2].SetActive(true);
+            resultWeightText.text = "Final Weight : " + result + " GigaTon !";
+            resultPanel.SetActive(true);
         }
+        fadeInPanel.SetActive(false);
     }
 }

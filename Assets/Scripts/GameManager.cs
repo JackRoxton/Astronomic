@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
     }
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void SetUIMan(UIManager uiM)
     {
         uiMan = uiM;
