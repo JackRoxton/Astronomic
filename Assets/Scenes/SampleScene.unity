@@ -2029,10 +2029,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6375277493831992667, guid: 1249dfda3e671164bbf87e37feed2b63,
+    - target: {fileID: 547441373117375865, guid: 1249dfda3e671164bbf87e37feed2b63,
         type: 3}
-      propertyPath: speed
-      value: 0.04
+      propertyPath: ShapeModule.angle
+      value: 35.641933
+      objectReference: {fileID: 0}
+    - target: {fileID: 547441373117375865, guid: 1249dfda3e671164bbf87e37feed2b63,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.97680604
+      objectReference: {fileID: 0}
+    - target: {fileID: 547441373117375865, guid: 1249dfda3e671164bbf87e37feed2b63,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 547441373117375865, guid: 1249dfda3e671164bbf87e37feed2b63,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 547441373117375865, guid: 1249dfda3e671164bbf87e37feed2b63,
+        type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677828577131885939, guid: 1249dfda3e671164bbf87e37feed2b63,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.02
       objectReference: {fileID: 0}
     - target: {fileID: 6375277493831992668, guid: 1249dfda3e671164bbf87e37feed2b63,
         type: 3}
