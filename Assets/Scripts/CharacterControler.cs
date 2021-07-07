@@ -72,5 +72,9 @@ public class CharacterControler : MonoBehaviour
     {
         return size;
     }
-
+    public static void ResetSize()
+    {
+        size = 0.6f;
+        timeOver = false;
+    }
 }

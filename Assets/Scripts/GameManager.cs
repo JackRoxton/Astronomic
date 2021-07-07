@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     }*/
     private void Start()
     {
+        gameTimer = 0f;
     }
     void Update()
     {
@@ -70,12 +71,14 @@ public class GameManager : MonoBehaviour
     }
     public void TryAgain()
     {
+        CharacterControler.ResetSize();
         gameTimer = 0f;
         Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
     }
     public void ToMainMenu()
     {
+        CharacterControler.ResetSize();
         SceneManager.LoadScene("MainMenu");
     }
     public void SetUIMan(UIManager uiM)
