@@ -51,6 +51,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPowerUp()
     {
-        source.PlayOneShot(PowerUp,0.2f);
+        source.PlayOneShot(PowerUp,0.15f);
     }
 }
