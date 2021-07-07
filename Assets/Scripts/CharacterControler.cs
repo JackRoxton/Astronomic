@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacterControler : MonoBehaviour
 {
-    [SerializeField, Range(0,0.1f)]
-    private float speed = 0.10f;
+    [SerializeField, Range(0,40f)]
+    private float speed = 0.025f;
     private float horizontal;
     private static float size = 0.6f;
     private float oscilCenter = 0f;
@@ -32,7 +32,7 @@ public class CharacterControler : MonoBehaviour
         else if(Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
         {
             this.transform.position = new Vector3(Mathf.Clamp(
-            this.transform.position.x -speed,
+            this.transform.position.x -speed * Time.deltaTime,
             -9 + this.transform.localScale.x * 3.3f,
             9 - this.transform.localScale.x * 3.3f),
             this.transform.position.y);
@@ -40,7 +40,7 @@ public class CharacterControler : MonoBehaviour
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             this.transform.position = new Vector3(Mathf.Clamp(
-            this.transform.position.x + speed,
+            this.transform.position.x + speed * Time.deltaTime,
             -9 + this.transform.localScale.x *3.3f,
             9 - this.transform.localScale.x *3.3f),
             this.transform.position.y);
