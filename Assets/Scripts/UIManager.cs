@@ -9,9 +9,9 @@ public class UIManager : MonoBehaviour
     Text TimerText = null;
     [SerializeField]
     Slider TimerSlider = null;
-    [SerializeField] GameObject panelGO=null, panelTuto=null;
+    [SerializeField] GameObject panelGO=null, panelTuto=null, panelIGUI=null, fadeInPanel=null, resultPanel=null;
     [SerializeField] Button tryAgain=null;
-
+    private static bool fadeIn = false, fadeOut=false;
     void Start()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().SetUIMan(this);
@@ -19,6 +19,23 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        if (fadeInPanel.GetComponent<Image>().color.a >= 255f)
+        {
+            fadeIn = false;
+            DisplayResults(CharacterControler.SendWeight());
+        }
+        else if (fadeIn)
+        {
+            Color tmpCol = fadeInPanel.GetComponent<Image>().color;
+            tmpCol.a = fadeInPanel.GetComponent<Image>().color.a + 12f;
+            fadeInPanel.GetComponent<Image>().color=tmpCol;
+        }
+        else if (fadeInPanel.GetComponent<Image>().color.a > 0)
+        {
+            Color tmpCol = fadeInPanel.GetComponent<Image>().color;
+            tmpCol.a = fadeInPanel.GetComponent<Image>().color.a - 12f;
+            fadeInPanel.GetComponent<Image>().color = tmpCol;
+        }
         TimerText.text = (90 - GameManager.GetTimer()).ToString();
         TimerSlider.value = GameManager.GetTimer();
     }
@@ -30,10 +47,27 @@ public class UIManager : MonoBehaviour
 
     public static void WinScreen()
     {
-
+        fadeIn = true;
     }
     public void DeactivateTuto()
     {
         panelTuto.SetActive(false);
+    }
+    public void SetIGUI(bool active)
+    {
+        panelIGUI.SetActive(active);
+    }
+    private void DisplayResults(float result)
+    {
+        if (result >= 30f)
+        {
+            //annihilation totale
+        }else if (result > 1.6f) {
+            //cratère
+        }
+        else
+        {
+            //plouf
+        }
     }
 }

@@ -33,12 +33,22 @@ public class GameManager : MonoBehaviour
         {
             tuto = false;
             uiMan.DeactivateTuto();
+            uiMan.SetIGUI(true);
             spawner.phase = 1;
         }
         if (tuto) return;
         gameTimer += Time.deltaTime;
         if (gameTimer >= 90)
+        {
+
+        }
+        else if (gameTimer >= 88)
             UIManager.WinScreen();
+        else if (gameTimer >= 85)
+        {
+            CharacterControler.timeOver = true;
+            uiMan.SetIGUI(false);
+        }
         else if (gameTimer >= 80)
             spawner.phase = 4;
         else if (gameTimer >= 60)
