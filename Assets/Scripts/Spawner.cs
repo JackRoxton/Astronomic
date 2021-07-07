@@ -116,9 +116,9 @@ public class Spawner : MonoBehaviour
             astero = 6;
         else if (rand <= 54)
             astero = 7;
-        else if (rand <= 64)
-            astero = 8;
         else if (rand <= 74)
+            astero = 8;
+        else if (rand <= 84)
             astero = 9;
         else
             astero = 10;
