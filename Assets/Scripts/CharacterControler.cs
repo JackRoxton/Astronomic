@@ -7,7 +7,10 @@ public class CharacterControler : MonoBehaviour
     [SerializeField, Range(0,0.1f)]
     private float speed = 0.10f;
     private float horizontal;
-    private static float size = 0.6f; 
+    private static float size = 0.6f;
+
+    [SerializeField]
+    ParticleSystem ps;
     void Start()
     {
         this.transform.localScale = Vector3.one * 2*Mathf.Pow(0.75f * size /(Mathf.PI*150) , 1f / 3f);
@@ -36,6 +39,7 @@ public class CharacterControler : MonoBehaviour
             9 - this.transform.localScale.x *3.3f),
             this.transform.position.y);
         }
+        ps.transform.localScale = this.transform.localScale;
     }
 
     public void ChangeWeight(float weight)
