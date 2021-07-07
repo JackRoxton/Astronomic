@@ -7,14 +7,19 @@ public class Asteroid : MonoBehaviour
     [SerializeField, Range(0,30)]
     float size = 1;
     [SerializeField, Range(0,1000)]
-    float speed = 300;
+    public float speed = 300;
 
-    Vector3 target;
+    public Vector3 target;
+
+    public bool rafale;
 
     bool hit = false;
     bool heavierThanPlayer = true;
     void Start()
     {
+        if (rafale)
+            return;
+
         this.speed += Random.Range(-50f, 50f);
 
         target = new Vector3(Random.Range(-8f,8f),4.5f);

@@ -19,8 +19,8 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        right = new Vector3(10, -2);
-        left = new Vector3(-10, -2);
+        right = new Vector3(10, -4);
+        left = new Vector3(-10, -4);
     }
 
     void Update()
@@ -120,6 +120,8 @@ public class Spawner : MonoBehaviour
             astero = 8;
         else if (rand <= 84)
             astero = 9;
+        else if (phase == 2)
+            astero = 11;
         else
             astero = 10;
 
