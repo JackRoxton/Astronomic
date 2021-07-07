@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
             tuto = false;
             uiMan.DeactivateTuto();

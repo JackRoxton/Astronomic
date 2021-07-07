@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     GameObject missile = null;
 
-    public int phase = 1;
+    public int phase = 0;
     bool sFlag = false, bFlag = false;
 
     Vector3 right, left;
