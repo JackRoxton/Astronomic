@@ -64,7 +64,6 @@ public class CharacterControler : MonoBehaviour
             size += weight;
             this.transform.localScale = Vector3.one *2f* Mathf.Pow(0.75f * size /(150f* Mathf.PI) , 1f / 3f);
         }
-        Debug.Log(size);
 
     }
 

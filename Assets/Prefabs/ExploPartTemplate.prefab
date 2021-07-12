@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6437218392570748880}
   - component: {fileID: 574216475407061450}
   m_Layer: 0
-  m_Name: patate11
+  m_Name: ExploPartTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bb2f95d4896788847856f9bc47e6be0f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

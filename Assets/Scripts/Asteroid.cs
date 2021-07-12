@@ -61,7 +61,7 @@ public class Asteroid : MonoBehaviour
             hit = true;
 
             AudioManager.Instance.PlayPowerUp();
-
+            ExploParts.Burst(this.gameObject.transform.position, size);
             Destroy(this.gameObject);
         }
     }
