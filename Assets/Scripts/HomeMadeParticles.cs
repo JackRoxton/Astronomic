@@ -13,7 +13,7 @@ public class HomeMadeParticles : MonoBehaviour
         parts = new List<GameObject>();
         for(int i = 0; i < 1000; i++)
         {
-            Vector3 rndPos = new Vector3(Random.Range(-9f, 9f), Random.Range(-9f, 9f), 1f);
+            Vector3 rndPos = new Vector3(Random.Range(-9f, 9f), Random.Range(-9f, 9f), 2f);
             GameObject tempStar = Instantiate(star, rndPos, Quaternion.identity);
             tempStar.transform.localScale =( (0.1f+50f/(i+50f)) )* Vector3.one;
             parts.Add(tempStar);
